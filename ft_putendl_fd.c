@@ -1,9 +1,23 @@
-void ft_putendl_fd(char *s, int fd)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/26 16:02:44 by tdehne            #+#    #+#             */
+/*   Updated: 2022/03/26 17:02:09 by tdehne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putendl_fd(char *s, int fd)
 {
-    while (*s)
-    {
-        write(fd, s, 1);
-        s++;
-    }
-    write(fd, "\n", 1);
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+	write(fd, "\n", 1);
 }

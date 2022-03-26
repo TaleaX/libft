@@ -1,12 +1,24 @@
-char *ft_strchr(const char *s, int c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/26 15:53:22 by tdehne            #+#    #+#             */
+/*   Updated: 2022/03/26 15:53:23 by tdehne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strchr(const char *s, int c)
 {
-    while (*s)
-    {
-        if (*s == c)
-        {
-            return ((char *)s);
-        }
-        s++;
-    }
-    return ((void *) 0);
+	while (*s)
+	{
+		if (*s == c)
+		{
+			return ((char *)s);
+		}
+		s++;
+	}
+	return ((void *) 0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/26 16:02:17 by tdehne            #+#    #+#             */
+/*   Updated: 2022/03/26 16:02:35 by tdehne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int	log_10(int num)
@@ -34,7 +46,7 @@ void	ft_putnbr_fd(int n, int fd)
 	int		counter;
 	long	num_long;
 
-	num_long = (long) nb;
+	num_long = (long) n;
 	counter = 0;
 	exp = log_10(num_long);
 	while (counter <= exp)

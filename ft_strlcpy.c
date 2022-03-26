@@ -1,23 +1,32 @@
-#include <stddef.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/26 15:00:23 by tdehne            #+#    #+#             */
+/*   Updated: 2022/03/26 16:33:47 by tdehne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t ft_strlcpy(char *dst, const char *src, size_t size)
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-    int i;
+	size_t	i;
 
-    i = 0;
-    if (size <= 0) return (0);
-    while (size > 1 && *src != '\0')
-    {
-        dst[i] = *src;
-        src++;
-        i++;
-        size--;
-    }
-    dst[i] = '\0';
-    while (*src != '\0')
-    {
-        i++;
-        src++;
-    }
-    return (i - 1);
+	i = 0;
+	if (size > 0)
+	{
+		while (i < (size - 1) && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	while (src[i])
+		i++;
+	return (i - 1);
 }
