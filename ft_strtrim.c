@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:29:07 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 16:58:05 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/03/26 17:55:34 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,26 @@ static char	*trim(char const *s1, char const *set, int len, char *str_trim)
 	int		j;
 	int		start;
 	int		end;
+	int		k;
 
 	i = 0;
 	j = 0;
 	end = 1;
 	start = 1;
+	k = 0;
 	while (i < len - j)
 	{
 		while (start && is_in_set(set, s1[i]))
 			i++;
 		start = 0;
-		str_trim[j] = s1[i];
+		str_trim[k] = s1[i];
 		while (end && is_in_set(set, s1[len - j - 1]))
 			j++;
 		end = 0;
 		i++;
+		k++;
 	}
+	str_trim[k] = '\0';
 	return (str_trim);
 }
 
