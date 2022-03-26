@@ -9,10 +9,10 @@ all: $(NAME)
 
 #%.o: %.c %.h
 #	$(CC) $(CFLAGS) -c $^
-$(NAME): objects all_func.h
+$(NAME): objects libft.h
 	ar rcs libmylib.a *.o
 
-objects: $(SRC) all_func.h
+objects: $(SRC) libft.h
 	$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
