@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:29:07 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 17:55:34 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/01 15:11:30 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,23 @@ static char	*trim(char const *s1, char const *set, int len, char *str_trim)
 {
 	int		i;
 	int		j;
-	int		start;
-	int		end;
+	int		start_end;
 	int		k;
 
 	i = 0;
 	j = 0;
-	end = 1;
-	start = 1;
+	start_end = 1;
 	k = 0;
 	while (i < len - j)
 	{
-		while (start && is_in_set(set, s1[i]))
+		while (start_end && is_in_set(set, s1[i]))
 			i++;
-		start = 0;
+		if (!s1[i])
+			break ;
 		str_trim[k] = s1[i];
-		while (end && is_in_set(set, s1[len - j - 1]))
+		while (start_end && is_in_set(set, s1[len - j - 1]))
 			j++;
-		end = 0;
+		start_end = 0;
 		i++;
 		k++;
 	}
@@ -58,9 +57,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		len;
 
 	len = ft_strlen(s1);
-	if (!s1 || !set)
-		return ((void *) 0);
 	str_trim = (char *) malloc(sizeof(char) * len + 1);
+	if (!set || !str_trim)
+		return ((void *) 0);
 	str_trim = trim(s1, set, len, str_trim);
 	return (str_trim);
 }
