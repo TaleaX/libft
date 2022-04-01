@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:02:17 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 16:02:35 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/01 17:05:06 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_putnbr_fd(int n, int fd)
 		if (num_long < 0)
 		{
 			num_long = -num_long;
-			write(1, "-", 1);
+			write(fd, "-", 1);
 		}
 		digit = ((num_long / pow_of(10, exp - counter)) % 10) + 48;
 		write(fd, &digit, 1);
