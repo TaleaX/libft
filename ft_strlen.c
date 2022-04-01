@@ -6,11 +6,13 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:05:41 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 16:59:58 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/01 14:27:29 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	int		counter;
 
