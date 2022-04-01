@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:47:18 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 17:10:39 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/01 15:29:38 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	if (!s1 || !s2)
-		return ((void *) 0);
 	str_concat = (char *) malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!str_concat)
+		return ((void *) 0);
 	i = 0;
 	while (s1[i])
 	{
@@ -30,9 +30,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	while (s2[j])
 	{
-		str_concat[j + i] = s1[j];
+		str_concat[j + i] = s2[j];
 		j++;
 	}
-	str_concat[j + i] = '\0';
+	str_concat[i + j] = '\0';
 	return (str_concat);
 }
