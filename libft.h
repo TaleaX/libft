@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:06:22 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/29 17:26:06 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/01 14:28:00 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
-int		ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
