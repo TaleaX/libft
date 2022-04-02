@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:53:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 17:12:10 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:51:21 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@
 static int	get_len(const char *s, char c)
 {
 	int	counter;
-	int	hit_delim;
 
-	hit_delim = 0;
 	counter = 0;
 	while (*s)
 	{
-		while (*s == c && !hit_delim)
+		if (*s == c)
 		{
-			hit_delim = 1;
+			while (*s == c)
+				s++;
 			counter++;
 		}
-		hit_delim = 0;
 		s++;
 	}
 	return (counter + 1);
@@ -46,73 +44,51 @@ static int	get_sublen(const char *s, char c)
 	return (counter);
 }
 
-/*char	**ft_split_helper(char const *s, char c, char **arr, int len)
-{
-	int		i;
-	int		j;
-	int		len_sub;
-
-	i = 0;
-	while (i < len)
-	{
-		len_sub = len_substr(s, c);
-		arr[i] = (char *) malloc(sizeof(char) * len_sub + 1);
-		j = 0;
-		while (*s && *s != c)
-		{
-			arr[i][j] = *s;
-			s++;
-		j++;
-		}
-		arr[i][j] = '\0';
-		i++;
-		s++;
-	}
-	arr[i] = (void *) 0;
-	return (arr);
-}*/
-
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	char	*s_trimmed;
 	int		len;
 	int		sub_len;
-	int 	i;
-	char	*ch;
+	int		i;
 
-	ch = (char *) malloc(2);
-	ch[0] = ';';
-	ch[1] = '\0';
-	s_trimmed = ft_strtrim(s_trimmed, ch);
-	//printf("%s\n", s_trimmed);
-	len = get_len(s_trimmed, c);
-	arr = (char **) malloc(sizeof(char *) * len + 1);
+	if (c == '\0')
+	{
+		printf("HEILASFJ:FJKLSA:");
+		return (NULL);
+	}
+	
 	if (!s)
 		return ((void *) 0);
+	s_trimmed = ft_strtrim(s, &c);
+	len = get_len(s_trimmed, c);
+	arr = (char **) ft_calloc(len + 1, sizeof(char *));
+	if (!arr)
+		return NULL;	
 	i = 0;
 	while (i < len)
 	{
 		sub_len = get_sublen(s_trimmed, c);
+		//printf("%d\n", sub_len);
 		arr[i] = ft_substr(s_trimmed, 0, sub_len);
-		//printf("lol\n%s\nlol\n%d %d\n", arr[i], i, sub_len);
 		s_trimmed = ft_strchr(s_trimmed, c);
-		while (*s_trimmed == c)
+		while (s_trimmed && *s_trimmed == c)
 			s_trimmed++;
 		i++;
 	}
-	arr[i] = 0;
+	free(s_trimmed);
 	return (arr);
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
-	char **arr;
+	char	**arr;
 
-	if (argc)
-	{
-		printf("%s\n", *argv);
-		arr = ft_split(*(argv+1), ';');
-	}
-	return 0;
+		arr = ft_split("\0aa\0bbb", '\0');
+		// while (*arr)
+		// {
+		// 	printf("%s\n", *arr);
+		// 	arr++;
+		// }
+	return (0);
 }

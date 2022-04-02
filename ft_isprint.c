@@ -6,14 +6,11 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:11:01 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/29 15:28:45 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:40:55 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	unsigned char	cha;
-
-	cha = (unsigned char) c;
-	return (cha >= 32 && cha <= 126);
+	return (c >= 32 && c <= 126);
 }

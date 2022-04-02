@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:20:59 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/02 16:03:26 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 18:20:59 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!haystack || !needle)
-		return (NULL);
 	i = 0;
 	while (haystack[i] && i < len)
 	{

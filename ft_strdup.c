@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:51:46 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 17:00:22 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:37:18 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	arr = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!arr)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{

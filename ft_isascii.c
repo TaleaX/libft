@@ -6,14 +6,11 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:11:30 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/29 15:28:14 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:40:33 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	unsigned char	cha;
-
-	cha = (unsigned char) c;
-	return (cha >= 0 && cha <= 127);
+	return (c >= 0 && c <= 127);
 }

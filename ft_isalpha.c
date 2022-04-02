@@ -6,14 +6,11 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:11:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/26 16:12:19 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:40:04 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	unsigned char	cha;
-
-	cha = (unsigned char) c;
-	return ((cha >= 'A' && cha <= 'Z') || (cha >= 'a' && cha <= 'z'));
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

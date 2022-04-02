@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:51:49 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/01 15:42:47 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:47:39 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s || !sub)
 		return ((void *) 0);
 	if (ft_strlen(s) < start)
-		return ("");
+		return (ft_memset(sub, '\0', len + 1));
 	i = 0;
 	while (i < len && s[i + start])
 	{
