@@ -11,28 +11,33 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static int	get_splits(const char *s, char c)
+static int	get_len(const char *s, char c)
 {
 	int	counter;
+	int	hit_delim;
 
+	hit_delim = 0;
 	counter = 0;
 	while (*s)
 	{
-		if (*s == c)
+		while (*s == c && !hit_delim)
+		{
+			hit_delim = 1;
 			counter++;
+		}
+		hit_delim = 0;
 		s++;
 	}
-	return (counter);
+	return (counter + 1);
 }
 
-static int	len_substr(const char *s, int c)
+static int	get_sublen(const char *s, char c)
 {
 	int	counter;
 
 	counter = 0;
-	while (*s && *s == c)
-		s++;
 	while (*s && *s != c)
 	{
 		counter++;
@@ -41,7 +46,7 @@ static int	len_substr(const char *s, int c)
 	return (counter);
 }
 
-char	**ft_split_helper(char const *s, char c, char **arr, int len)
+/*char	**ft_split_helper(char const *s, char c, char **arr, int len)
 {
 	int		i;
 	int		j;
@@ -65,17 +70,49 @@ char	**ft_split_helper(char const *s, char c, char **arr, int len)
 	}
 	arr[i] = (void *) 0;
 	return (arr);
-}
+}*/
 
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
+	char	*s_trimmed;
 	int		len;
+	int		sub_len;
+	int 	i;
+	char	*ch;
 
-	len = get_splits(s, c);
+	ch = (char *) malloc(2);
+	ch[0] = ';';
+	ch[1] = '\0';
+	s_trimmed = ft_strtrim(s_trimmed, ch);
+	//printf("%s\n", s_trimmed);
+	len = get_len(s_trimmed, c);
 	arr = (char **) malloc(sizeof(char *) * len + 1);
 	if (!s)
 		return ((void *) 0);
-	arr = ft_split_helper(s, c, arr, len);
+	i = 0;
+	while (i < len)
+	{
+		sub_len = get_sublen(s_trimmed, c);
+		arr[i] = ft_substr(s_trimmed, 0, sub_len);
+		//printf("lol\n%s\nlol\n%d %d\n", arr[i], i, sub_len);
+		s_trimmed = ft_strchr(s_trimmed, c);
+		while (*s_trimmed == c)
+			s_trimmed++;
+		i++;
+	}
+	arr[i] = 0;
 	return (arr);
+}
+
+int main(int argc, char **argv)
+{
+	char **arr;
+
+	if (argc)
+	{
+		printf("%s\n", *argv);
+		arr = ft_split(*(argv+1), ';');
+	}
+	return 0;
 }
