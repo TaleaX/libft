@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:20:59 by tdehne            #+#    #+#             */
-/*   Updated: 2022/03/29 18:11:33 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/02 16:03:26 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,18 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	size_t	counter;
-	size_t	len_needle;
 
-	len_needle = ft_strlen(needle);
-	counter = 0;
-	if (!len_needle)
-		return ((char *) haystack);
+	if (!haystack || !needle)
+		return (NULL);
 	i = 0;
 	while (haystack[i] && i < len)
 	{
 		j = 0;
-		while (needle[j])
-		{
-			if (!haystack[j + i])
-				break ;
-			if (needle[j] == haystack[j + i])
-				counter++;
+		while (needle[j] && needle[j] == haystack[j + i] && (i + j) < len)
 			j++;
-		}
-		if (counter == len_needle)
+		if (j == ft_strlen(needle))
 			return ((char *)(haystack + i));
 		i++;
 	}
-	return ((void *) 0);
+	return (NULL);
 }
