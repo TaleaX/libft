@@ -19,8 +19,5 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!arr)
 	 	return (NULL);
 	ft_memset(arr,'\0',count * size);
-
-	// d_arr = (char *) arr;
-	// ft_bzero(d_arr, count);
 	return (arr);
 }

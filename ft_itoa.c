@@ -52,6 +52,8 @@ char	*ft_itoa(int n)
 	if (minus)
 		len++;
 	str = (char *) malloc(sizeof(char) * len + 1);
+	if (!str)
+		return ((void *) 0);
 	i = len - 1;
 	str[len] = '\0';
 	while (i >= 0)

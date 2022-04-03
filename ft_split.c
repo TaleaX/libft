@@ -52,14 +52,8 @@ char	**ft_split(char const *s, char c)
 	int		sub_len;
 	int		i;
 
-	if (c == '\0')
-	{
-		printf("HEILASFJ:FJKLSA:");
+	if (!s || !c)
 		return (NULL);
-	}
-	
-	if (!s)
-		return ((void *) 0);
 	s_trimmed = ft_strtrim(s, &c);
 	len = get_len(s_trimmed, c);
 	arr = (char **) ft_calloc(len + 1, sizeof(char *));
@@ -69,7 +63,6 @@ char	**ft_split(char const *s, char c)
 	while (i < len)
 	{
 		sub_len = get_sublen(s_trimmed, c);
-		//printf("%d\n", sub_len);
 		arr[i] = ft_substr(s_trimmed, 0, sub_len);
 		s_trimmed = ft_strchr(s_trimmed, c);
 		while (s_trimmed && *s_trimmed == c)
@@ -78,17 +71,4 @@ char	**ft_split(char const *s, char c)
 	}
 	free(s_trimmed);
 	return (arr);
-}
-
-int main(void)
-{
-	char	**arr;
-
-		arr = ft_split("\0aa\0bbb", '\0');
-		// while (*arr)
-		// {
-		// 	printf("%s\n", *arr);
-		// 	arr++;
-		// }
-	return (0);
 }

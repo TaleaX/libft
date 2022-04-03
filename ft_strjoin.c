@@ -18,9 +18,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
+	if (!s1 || !s2)
+		return (NULL);
 	str_concat = (char *) malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!str_concat)
-		return ((void *) 0);
+		return (NULL);
 	i = 0;
 	while (s1[i])
 	{
