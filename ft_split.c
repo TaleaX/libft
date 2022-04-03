@@ -75,7 +75,7 @@ char	**ft_split(char const *s, char c)
 	len = get_len(s, c);
 	arr = (char **) ft_calloc(len + 1, sizeof(char *));
 	if (!arr)
-		return NULL;	
+		return (NULL);	
 	i = 0;
 	while (i < len)
 	{
