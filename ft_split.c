@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static int	get_len(const char *s, char c)
+static size_t	get_len(const char *s, char c)
 {
-	int	counter;
+	size_t	counter;
 
 	counter = 0;
 	while (*s)
@@ -30,9 +29,9 @@ static int	get_len(const char *s, char c)
 	return (counter);
 }
 
-static int	get_sublen(const char *s, char c)
+static size_t	get_sublen(const char *s, char c)
 {
-	int	counter;
+	size_t	counter;
 
 	counter = 0;
 	while (*s && *s != c)
@@ -57,12 +56,19 @@ static const char	*set_ptr_to_word(const char *s, char c)
 	return (s);
 }
 
+static void	free_all(void **arr, size_t i)
+{
+	while (i >= 0)
+		free(arr[i]);
+	free(arr);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int		len;
-	int		sub_len;
-	int		i;
+	size_t	len;
+	size_t	sub_len;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
@@ -80,7 +86,10 @@ char	**ft_split(char const *s, char c)
 		arr[i] = ft_substr(s, 0, sub_len);
 		s = set_ptr_to_c(s, c);
 		if (!arr[i])
+		{
+			free_all((void **) arr, i);
 			break ;
+		}
 		i++;
 	}
 	return (arr);
