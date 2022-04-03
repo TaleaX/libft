@@ -84,8 +84,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (is_in_set(set, s1[end]))
 		end--;
 	len = end - start + 1;
-	if (len < 0)
-		len *= -1;
 	if (start == ft_strlen(s1))
 		len = 0;
 	str_trim = (char *) malloc(sizeof(char) * len + 1);

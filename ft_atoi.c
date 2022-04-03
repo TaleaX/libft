@@ -43,14 +43,12 @@ int	ft_atoi(const char *nptr)
 	int	result;
 	int	white_space;
 	int	hit_sign;
-	int	hit_num;
 	int	minus;
 	int	log_10;
 
 	result = 0;
 	white_space = 1;
 	hit_sign = 0;
-	hit_num = 0;
 	minus = 0;
 	while (*nptr)
 	{

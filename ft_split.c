@@ -20,15 +20,14 @@ static int	get_len(const char *s, char c)
 	counter = 0;
 	while (*s)
 	{
-		if (*s == c)
-		{
-			while (*s == c)
-				s++;
+		while (*s == c)
+			s++;
+		if (*s)
 			counter++;
-		}
-		s++;
+		while (*s && *s != c)
+			s++;
 	}
-	return (counter + 1);
+	return (counter);
 }
 
 static int	get_sublen(const char *s, char c)
@@ -44,31 +43,45 @@ static int	get_sublen(const char *s, char c)
 	return (counter);
 }
 
+static const char	*set_ptr_to_c(const char *s, char c)
+{
+	while (*s && *s != c)
+		s++;
+	return (s);
+}
+
+static const char	*set_ptr_to_word(const char *s, char c)
+{
+	while (*s && *s == c)
+		s++;
+	return (s);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	char	*s_trimmed;
 	int		len;
 	int		sub_len;
 	int		i;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
-	s_trimmed = ft_strtrim(s, &c);
-	len = get_len(s_trimmed, c);
+	len = get_len(s, c);
 	arr = (char **) ft_calloc(len + 1, sizeof(char *));
 	if (!arr)
 		return NULL;	
 	i = 0;
 	while (i < len)
 	{
-		sub_len = get_sublen(s_trimmed, c);
-		arr[i] = ft_substr(s_trimmed, 0, sub_len);
-		s_trimmed = ft_strchr(s_trimmed, c);
-		while (s_trimmed && *s_trimmed == c)
-			s_trimmed++;
+		s = set_ptr_to_word(s, c);
+		if (!*s)
+			break ;
+		sub_len = get_sublen(s, c);
+		arr[i] = ft_substr(s, 0, sub_len);
+		s = set_ptr_to_c(s, c);
+		if (!arr[i])
+			break ;
 		i++;
 	}
-	free(s_trimmed);
 	return (arr);
 }
