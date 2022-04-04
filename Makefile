@@ -6,7 +6,7 @@
 #    By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/26 14:19:40 by tdehne            #+#    #+#              #
-#    Updated: 2022/03/26 17:18:00 by tdehne           ###   ########.fr        #
+#    Updated: 2022/04/04 18:03:40 by tdehne           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,6 @@ $(NAME): objects
 
 objects: $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC)
-	
-#%.o: $(SRC)
-#	$(CC) $(CFLAGS) -c $^
 
 clean:
 	rm -f *.o
