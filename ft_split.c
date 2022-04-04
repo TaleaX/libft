@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:53:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/02 17:51:21 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 16:56:46 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,14 @@ static size_t	get_sublen(const char *s, char c)
 	return (counter);
 }
 
-static const char	*set_ptr_to_c(const char *s, char c)
+static const char	*set_ptr(const char *s, char c, int to_c)
 {
-	while (*s && *s != c)
-		s++;
-	return (s);
-}
-
-static const char	*set_ptr_to_word(const char *s, char c)
-{
-	while (*s && *s == c)
-		s++;
+	if (to_c)
+		while (*s && *s != c)
+			s++;
+	else
+		while (*s && *s == c)
+			s++;
 	return (s);
 }
 
@@ -75,16 +72,16 @@ char	**ft_split(char const *s, char c)
 	len = get_len(s, c);
 	arr = (char **) ft_calloc(len + 1, sizeof(char *));
 	if (!arr)
-		return (NULL);	
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		s = set_ptr_to_word(s, c);
+		s = set_ptr(s, c, 0);
 		if (!*s)
 			break ;
 		sub_len = get_sublen(s, c);
 		arr[i] = ft_substr(s, 0, sub_len);
-		s = set_ptr_to_c(s, c);
+		s = set_ptr(s, c, 1);
 		if (!arr[i])
 		{
 			free_all((void **) arr, i);

@@ -6,11 +6,12 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:29:07 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/02 18:31:06 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 16:09:14 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	is_in_set(char const *set, char c)
 {
@@ -23,26 +24,31 @@ static int	is_in_set(char const *set, char c)
 	return (0);
 }
 
+static long long	get_len(char const *s1, char const *set, long long start)
+{
+	long long	end;
+
+	end = ft_strlen(s1) - 1;
+	while (end >= 0 && is_in_set(set, s1[end]))
+		end--;
+	if (end < 0 || (size_t) start == ft_strlen(s1))
+		return (0);
+	return ((end + 1) - start);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str_trim;
-	size_t	len;
-	size_t	end;
-	size_t	start;
-	size_t 	i;
+	char		*str_trim;
+	long long	len;
+	long long	i;
+	long long	start;
 
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
-	end = 0;
-	end = ft_strlen(s1) - 1;
 	while (is_in_set(set, s1[start]))
 		start++;
-	while (is_in_set(set, s1[end]))
-		end--;
-	len = end - start + 1;
-	if (start == ft_strlen(s1))
-		len = 0;
+	len = get_len(s1, set, start);
 	str_trim = (char *) malloc(sizeof(char) * len + 1);
 	if (!str_trim)
 		return ((void *) 0);

@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:08:25 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/01 15:41:10 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 15:52:12 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static long	ft_abs(long n)
 char	*ft_itoa(int n)
 {
 	char		*str;
-	int			i;
 	int			len;
 	int			minus;
 	long		num;
@@ -54,15 +53,13 @@ char	*ft_itoa(int n)
 	str = (char *) malloc(sizeof(char) * len + 1);
 	if (!str)
 		return ((void *) 0);
-	i = len - 1;
 	str[len] = '\0';
-	while (i >= 0)
+	while (--len >= 0)
 	{
-		str[i] = (num % 10) + '0';
+		str[len] = (num % 10) + '0';
 		num = num / 10;
-		if (minus && i == 0)
-			str[i] = '-';
-		i--;
+		if (minus && len == 0)
+			str[len] = '-';
 	}
 	return (str);
 }
