@@ -6,13 +6,19 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:06:22 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/01 14:28:00 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 19:36:50 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isprint(int c);
@@ -48,5 +54,9 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strdup(const char *s);
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
 
 #endif
