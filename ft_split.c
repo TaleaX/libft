@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:53:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/04 16:56:46 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 17:19:58 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ static const char	*set_ptr(const char *s, char c, int to_c)
 	return (s);
 }
 
-static void	free_all(void **arr, size_t i)
+static void	*free_all(void **arr, size_t i)
 {
 	while (i >= 0)
 		free(arr[i]);
 	free(arr);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -83,10 +84,7 @@ char	**ft_split(char const *s, char c)
 		arr[i] = ft_substr(s, 0, sub_len);
 		s = set_ptr(s, c, 1);
 		if (!arr[i])
-		{
-			free_all((void **) arr, i);
-			break ;
-		}
+			return (free_all((void **) arr, i));
 		i++;
 	}
 	return (arr);
