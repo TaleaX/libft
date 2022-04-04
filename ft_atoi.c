@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:18:46 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/04 18:00:24 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 18:40:23 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ int	ft_atoi(const char *nptr)
 		if (*nptr < '0' || *nptr > '9')
 			break ;
 		log_10 = get_log_10(nptr);
+		if (!minus && (log_10 > 18 || (log_10 == 18 && nptr[18] > '7')))
+			return (-1);
+		if (minus && (log_10 > 18 || (log_10 == 18 && nptr[18] > '8')))
+			return (0);
 		result += ((*nptr) - '0') * pow_of_a(10, log_10);
 		nptr++;
 	}
