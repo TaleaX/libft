@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:18:46 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/04 16:42:33 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/04 18:00:24 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,46 +38,40 @@ static int	get_log_10(const char *nptr)
 	return (counter - 1);
 }
 
-void	atoi_helper(const char **nptr, int	*minus, long *result, int *w_s_h_s)
+int	correct_prefix(const char **nptr, int *minus)
 {
-	int		log_10;
-
-	while (**nptr)
+	while (**nptr == '\v' || **nptr == '\t' || **nptr == '\r'
+		|| **nptr == '\n' || **nptr == '\f' || **nptr == ' ')
+		(*nptr)++;
+	if (**nptr == '+' || **nptr == '-')
 	{
-		while (w_s_h_s[0] && (**nptr == '\v' || **nptr == '\t'
-				|| **nptr == '\r' || **nptr == '\n'
-				|| **nptr == '\f' || **nptr == ' '))
-			(*nptr)++;
-		w_s_h_s[0] = 0;
-		if (**nptr < '0' || **nptr > '9')
-		{
-			if (!w_s_h_s[1] && (**nptr == '+' || **nptr == '-'))
-			{
-				if (**nptr == '-')
-					*minus = 1;
-				w_s_h_s[1] = 1;
-				(*nptr)++;
-				continue ;
-			}
-			break ;
-		}
-		log_10 = get_log_10(*nptr);
-		*result += ((**nptr) - '0') * pow_of_a(10, log_10);
+		if (**nptr == '-')
+			*minus = 1;
 		(*nptr)++;
 	}
+	if (**nptr < '0' || **nptr > '9')
+		return (0);
+	return (1);
 }
 
 int	ft_atoi(const char *nptr)
 {
 	long	result;
 	int		minus;
-	int		white_s_hit_s[2];
+	int		log_10;
 
 	result = 0;
 	minus = 0;
-	white_s_hit_s[0] = 1;
-	white_s_hit_s[1] = 0;
-	atoi_helper(&nptr, &minus, &result, white_s_hit_s);
+	if (!correct_prefix(&nptr, &minus))
+		return (0);
+	while (*nptr)
+	{
+		if (*nptr < '0' || *nptr > '9')
+			break ;
+		log_10 = get_log_10(nptr);
+		result += ((*nptr) - '0') * pow_of_a(10, log_10);
+		nptr++;
+	}
 	if (minus)
 		result = result * (-1);
 	return (result);
