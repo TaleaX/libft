@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:23:18 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/01 16:08:16 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/05 14:23:17 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	char	*str;
 
-	if (!s)
+	if (!s || !f)
 		return ((void *) 0);
 	str = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
 	if (!str)
-		return ((void *) 0);
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{

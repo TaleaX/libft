@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:29:07 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/04 16:09:14 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/05 12:19:51 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = get_len(s1, set, start);
 	str_trim = (char *) malloc(sizeof(char) * len + 1);
 	if (!str_trim)
-		return ((void *) 0);
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
