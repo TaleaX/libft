@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:51:49 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/02 17:47:39 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/05 14:49:03 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	i;
 
+	if (ft_strlen(s) < len)
+		len = ft_strlen(s);
 	sub = (char *) malloc(sizeof(char) * len + 1);
 	if (!s || !sub)
 		return (NULL);
