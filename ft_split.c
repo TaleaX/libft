@@ -53,7 +53,7 @@ static const char	*set_ptr(const char *s, char c, int to_c)
 	return (s);
 }
 
-static void	*free_all(void **arr, size_t i)
+static char	*free_all(char **arr, size_t i)
 {
 	while (i >= 0)
 		free(arr[i--]);
@@ -84,7 +84,7 @@ char	**ft_split(char const *s, char c)
 		arr[i] = ft_substr(s, 0, sub_len);
 		s = set_ptr(s, c, 1);
 		if (!arr[i])
-			return (free_all((void **) arr, i));
+			return (free_all(arr, i));
 		i++;
 	}
 	return (arr);
