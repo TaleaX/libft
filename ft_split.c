@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 		arr[i] = ft_substr(s, 0, sub_len);
 		s = set_ptr(s, c, 1);
 		if (!arr[i])
-			return (free_all(arr, i));
+			return (free_all(arr, i - 1));
 		i++;
 	}
 	return (arr);
