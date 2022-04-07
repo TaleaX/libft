@@ -56,9 +56,9 @@ static int	correct_prefix(const char **nptr, int *minus)
 
 int	ft_atoi(const char *nptr)
 {
-	long	result;
-	int		minus;
-	int		log_10;
+	long long	result;
+	int			minus;
+	int			log_10;
 
 	result = 0;
 	minus = 0;
@@ -69,9 +69,9 @@ int	ft_atoi(const char *nptr)
 		if (*nptr < '0' || *nptr > '9')
 			break ;
 		log_10 = get_log_10(nptr);
-		if (!minus && (log_10 > 18 || (log_10 == 18 && nptr[18] > '7')))
+		if (!minus && result > 9223372036854775800 && nptr[18] > '7')
 			return (-1);
-		if (minus && (log_10 > 18 || (log_10 == 18 && nptr[18] > '8')))
+		if (minus && result > 9223372036854775800 && nptr[18] > '8')
 			return (0);
 		result += ((*nptr) - '0') * pow_of_a(10, log_10);
 		nptr++;
