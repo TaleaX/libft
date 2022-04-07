@@ -23,5 +23,5 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char *)(s + len));
 		len--;
 	}
-	return ((void *) 0);
+	return (NULL);
 }

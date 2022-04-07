@@ -17,10 +17,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	if (ft_strlen(s) < len)
 		len = ft_strlen(s);
 	sub = (char *) malloc(sizeof(char) * len + 1);
-	if (!s || !sub)
+	if (!sub)
 		return (NULL);
 	if (ft_strlen(s) < start)
 		return (ft_memset(sub, '\0', len + 1));
