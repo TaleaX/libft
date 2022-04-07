@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int	log_10(int num)
+static int	log_10(int num)
 {
 	int		counter;
 
@@ -26,7 +26,7 @@ int	log_10(int num)
 	return (counter);
 }
 
-int	pow_of(int base, int exp)
+static int	pow_of(int base, int exp)
 {
 	int		result;
 

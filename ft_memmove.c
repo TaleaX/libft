@@ -19,8 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 
 	d_src = (char *) src;
 	d_dest = (char *) dest;
-	if (!src && !dest)
-		return (NULL);
+	if (src == dest)
+		return (dest);
 	if (src < dest)
 	{
 		while (len--)

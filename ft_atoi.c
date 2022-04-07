@@ -38,7 +38,7 @@ static int	get_log_10(const char *nptr)
 	return (counter - 1);
 }
 
-int	correct_prefix(const char **nptr, int *minus)
+static int	correct_prefix(const char **nptr, int *minus)
 {
 	while (**nptr == '\v' || **nptr == '\t' || **nptr == '\r'
 		|| **nptr == '\n' || **nptr == '\f' || **nptr == ' ')
