@@ -53,10 +53,11 @@ static const char	*set_ptr(const char *s, char c, int to_c)
 	return (s);
 }
 
-static char	*free_all(char **arr, size_t i)
+static void	*free_all(char **arr, size_t i)
 {
-	while (i >= 0)
+	while (i > 0)
 		free(arr[i--]);
+	free(arr[i]);
 	free(arr);
 	return (NULL);
 }
