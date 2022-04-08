@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:12:25 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/06 17:03:47 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/08 11:29:03 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	len = ft_strlen(s);
 	while (len >= 0)
 	{
-		if (s[len] == (unsigned char) c)
+		if (s[len] == (char) c)
 			return ((char *)(s + len));
 		len--;
 	}

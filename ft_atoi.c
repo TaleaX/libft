@@ -6,13 +6,13 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:18:46 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/04 18:40:23 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/08 12:19:40 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	pow_of_a(int base, int exp)
+static long long	pow_of_a(int base, int exp)
 {
-	int		result;
+	long long	result;
 
 	result = 1;
 	while (exp > 0)
@@ -69,9 +69,11 @@ int	ft_atoi(const char *nptr)
 		if (*nptr < '0' || *nptr > '9')
 			break ;
 		log_10 = get_log_10(nptr);
-		if (!minus && ((result > 922337203685477580) || (result == 922337203685477580 && *nptr > '7')))
+		if (!minus && ((result > 922337203685477580)
+				|| (result == 922337203685477580 && *nptr > '7')))
 			return (-1);
-		if (minus && ((result > 922337203685477580) || (result == 922337203685477580 && *nptr > '8')))
+		if (minus && ((result > 922337203685477580)
+				|| (result == 922337203685477580 && *nptr > '8')))
 			return (0);
 		result += ((*nptr) - '0') * pow_of_a(10, log_10);
 		nptr++;
