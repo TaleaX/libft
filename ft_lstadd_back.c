@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:24:13 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/06 17:39:16 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/09 12:13:37 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 	{
 		*lst = new;
-		return	;
+		return ;
 	}
 	tmp = *lst;
 	while (tmp->next)

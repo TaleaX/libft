@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:45:35 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/06 17:42:56 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/09 12:19:52 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		tmp = *lst;
 		*lst = (*lst)->next;
 		ft_lstdelone(tmp, del);
-		free(tmp);
 	}
 	*lst = NULL;
 }
