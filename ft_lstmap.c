@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 10:03:49 by tdehne            #+#    #+#             */
-/*   Updated: 2022/04/09 12:18:07 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/04/09 17:26:02 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
+	t_list	*new;
+	t_list	*head;
 
+	if (!lst)
+		return (NULL);
+	head = NULL;
 	while (lst)
 	{
-		if (!lst->content)
-			ft_lstdelone(lst, del);
-		new_lst = ft_lstnew((*f)(lst->content));
-		new_lst = new_lst->next;
+		new = ft_lstnew((*f)(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&lst, del);
+			new = NULL;
+			return (new);
+		}
+		ft_lstadd_back(&head, new);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (head);
 }
