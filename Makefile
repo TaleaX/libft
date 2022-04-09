@@ -6,7 +6,7 @@
 #    By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/26 14:19:40 by tdehne            #+#    #+#              #
-#    Updated: 2022/04/08 11:33:57 by tdehne           ###   ########.fr        #
+#    Updated: 2022/04/09 14:28:56 by tdehne           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,23 +17,25 @@ SRC=ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_atoi.c \
 	ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 	ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_memcmp.c \
-	ft_strnstr.c 
+	ft_strnstr.c
 BONUS=ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
 	ft_lstiter.c ft_lstmap.c
+OBJ=$(SRC:.c=.o)
+B_OBJ=$(BONUS:.c=.o)
 NAME=libft.a
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
 
-$(NAME): objects
-	ar rcs $(NAME) *.o
+bonus: $(B_OBJ) $(OBJ)
+	ar rc $(NAME) $(OBJ) $(B_OBJ)
 
-bonus: b_objects $(NAME)
-
-b_objects: $(BONUS)
+$(B_OBJ): $(BONUS)
 	$(CC) $(CFLAGS) -c $(BONUS)
 
-objects: $(SRC)
+$(OBJ): $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
